@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -e
-# Absolute path to repo root (directory containing this script)
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
-cd "$ROOT"
-export PYTHONPATH="$ROOT"
+# Render always uses this path for the repo root - do not rely on $0 or cwd
+export PYTHONPATH="/opt/render/project/src"
+cd /opt/render/project/src
 exec gunicorn TICKET.wsgi:application --log-file -
